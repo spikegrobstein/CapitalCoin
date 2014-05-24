@@ -12,16 +12,7 @@ windows:LIBS += -lshlwapi
 LIBS += $$join(BOOST_LIB_PATH,,-L,) $$join(BDB_LIB_PATH,,-L,) $$join(OPENSSL_LIB_PATH,,-L,) $$join(QRENCODE_LIB_PATH,,-L,)
 LIBS += -lssl -lcrypto -ldb_cxx$$BDB_LIB_SUFFIX
 windows:LIBS += -lws2_32 -lole32 -loleaut32 -luuid -lgdi32
-LIBS += -lboost_system-mgw48-mt-sd-1_53 -lboost_filesystem-mgw48-mt-sd-1_53 -lboost_program_options-mgw48-mt-sd-1_53 -lboost_thread-mgw48-mt-sd-1_53 -lpthread
-BOOST_LIB_SUFFIX=-mgw48-mt-sd-1_53
-BOOST_INCLUDE_PATH=C:/deps/boost_1_53_0
-BOOST_LIB_PATH=C:/deps/boost_1_53_0/stage/lib
-BDB_INCLUDE_PATH=C:/deps/db-6.0.20.NC/build_unix
-BDB_LIB_PATH=C:/deps/db-6.0.20.NC/build_unix
-OPENSSL_INCLUDE_PATH=C:/deps/openssl-1.0.1e/include
-OPENSSL_LIB_PATH=C:/deps/openssl-1.0.1e
-MINIUPNPC_INCLUDE_PATH=C:/deps/
-MINIUPNPC_LIB_PATH=C:/deps/miniupnpc
+LIBS += -lboost_system-mgw46-mt-1_54 -lboost_filesystem-mgw46-mt-1_54 -lboost_program_options-mgw46-mt-1_54 -lboost_thread-mgw46-mt-1_54 -lpthread
 
 OBJECTS_DIR = build
 MOC_DIR = build
@@ -336,7 +327,7 @@ isEmpty(BOOST_INCLUDE_PATH) {
     macx:BOOST_INCLUDE_PATH = /opt/local/include
 }
 
-windows:DEFINES += WIN32
+windows:DEFINES += WIN32 WIN32_LEAN_AND_MEAN
 windows:RC_FILE = src/qt/res/bitcoin-qt.rc
 
 windows:!contains(MINGW_THREAD_BUGFIX, 0) {
